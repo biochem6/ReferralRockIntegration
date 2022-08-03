@@ -1,0 +1,23 @@
+<p>Edit Referral</p>
+<mat-form-field appearance="fill">
+  <mat-label>First Name</mat-label>
+  <input [(ngModel)]="firstName" matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Last Name</mat-label>
+  <input [(ngModel)]="lastName" matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Email</mat-label>
+  <input [(ngModel)]="email" matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Phone Number</mat-label>
+  <input [(ngModel)]="phone" matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Amount</mat-label>
+  <input [(ngModel)]="amount" matInput>
+</mat-form-field>
+<button mat-flat-button color="accent" (click)="save()">Save</button>
+

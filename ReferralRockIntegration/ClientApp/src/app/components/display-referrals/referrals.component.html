@@ -1,0 +1,83 @@
+
+<mat-card>Referrals for member: {{referringMemberName}}</mat-card>
+<mat-table [dataSource]="referrals" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.firstName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.lastName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.email}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.phoneNumber}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="referralUrl">
+    <mat-header-cell *matHeaderCellDef> Referral Url </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.referralUrl}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="referralCode">
+    <mat-header-cell *matHeaderCellDef> Referral Code </mat-header-cell>
+    <mat-cell *matCellDef="let referral"> {{referral.referralCode}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit" class="edit">
+    <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>
+    <mat-cell fxFlex="100px" *matCellDef="let row">
+      <button mat-flat-button color="accent" (click)="editReferral(row)">Edit</button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete" class="delete">
+    <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>
+    <mat-cell fxFlex="100px" *matCellDef="let row">
+      <button mat-flat-button color="warn" (click)="removeReferral(row)">Delete</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+</mat-table>
+
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add a new referral
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input [(ngModel)]="newRefFirstName" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input [(ngModel)]="newRefLastName" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input [(ngModel)]="newRefEmail" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input [(ngModel)]="newRefPhone" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input [(ngModel)]="newRefAmount" matInput>
+    </mat-form-field>
+    <mat-checkbox (change)="isApproved($event)">Approve Referral</mat-checkbox>
+  <mat-action-row>
+    <button fxLayout="column" fxLayoutAlign="center center" mat-flat-button color="primary" (click)="saveReferral()">Save</button>
+  </mat-action-row>
+</mat-expansion-panel>

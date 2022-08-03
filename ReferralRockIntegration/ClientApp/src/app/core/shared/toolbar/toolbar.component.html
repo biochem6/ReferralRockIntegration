@@ -1,0 +1,12 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer">My App</span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="navBtnClick('members')">View Members</button><
+      <button mat-menu-item (click)="navBtnClick('referrals')">Edit Referrals</button>
+    </mat-menu>
+  </mat-toolbar>
+</p>
